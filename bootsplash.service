@@ -1,0 +1,16 @@
+[Unit]
+Description=Boot Splash
+DefaultDependencies=no
+After=local-fs.target
+Before=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/fbi -T 1 -noverbose -a /boot/splash.gif
+StandardInput=tty
+StandardOutput=tty
+StandardError=tty
+TTYPath=/dev/tty1
+Restart=on-failure
+
+[Install]
+WantedBy=sysinit.target
